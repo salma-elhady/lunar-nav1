@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LunarNav | CLPS Mission Browser</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">◒</span><div><strong>LUNARNAV</strong><small>CLPS MISSION BROWSER</small></div></div>
+    <span class="status"><i></i> EXPLORATION MODE</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">LUNAR SOUTH POLE · MISSION PLANNING CONCEPT</div>
+      <h1>Find the <span>light.</span><br>Plan the mission.</h1>
+      <p>Explore how location and date can affect sunlight and direct-to-Earth visibility at the lunar south pole.</p>
+      <div class="hero-note">DEMO MODEL · Values below are illustrative, not mission-grade predictions.</div>
+    </section>
+
+    <section class="controls panel">
+      <div class="section-heading"><div><span class="eyebrow">01 / CONFIGURE</span><h2>Mission parameters</h2></div><span class="tag">LIVE DEMO</span></div>
+      <div class="control-grid">
+        <label>Candidate site
+          <select id="site">
+            <option value="ridge">Ridge Alpha</option>
+            <option value="crater">Crater Rim Beta</option>
+            <option value="plain">South Plain Gamma</option>
+          </select>
+        </label>
+        <label>Mission date
+          <input id="missionDate" type="date" value="2026-11-15">
+        </label>
+        <label>Local time <span id="timeLabel">12:00</span>
+          <input id="time" type="range" min="0" max="23" value="12">
+        </label>
+      </div>
+      <div class="time-labels"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>23:00</span></div>
+    </section>
+
+    <section class="metrics">
+      <article class="metric panel"><span class="metric-label">SUN ELEVATION</span><strong id="sunElevation">8.4°</strong><small>Illustrative estimate</small><div class="mini-line"><span style="width:65%"></span></div></article>
+      <article class="metric panel"><span class="metric-label">ILLUMINATION</span><strong id="illumination">72%</strong><small>Demo daylight indicator</small><div class="mini-line"><span id="illumBar" style="width:72%"></span></div></article>
+      <article class="metric panel"><span class="metric-label">EARTH VISIBILITY</span><strong id="earthVisibility">VISIBLE</strong><small>Horizon obstruction not modeled</small><div class="mini-line"><span id="earthBar" style="width:85%"></span></div></article>
+      <article class="metric panel"><span class="metric-label">SOLAR POTENTIAL</span><strong id="solarPotential">HIGH</strong><small>Relative concept indicator</small><div class="mini-line"><span id="solarBar" style="width:78%"></span></div></article>
+    </section>
+
+    <section class="visual-grid">
+      <article class="panel map-panel">
+        <div class="section-heading"><div><span class="eyebrow">02 / SITE VIEW</span><h2>South pole terrain</h2></div><span class="tag">SCHEMATIC</span></div>
+        <div class="moon-scene">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="moon"><span class="crater crater-a"></span><span class="crater crater-b"></span><span class="crater crater-c"></span><span class="ridge"></span></div>
+          <div class="sun-dot">☼</div><div class="earth-dot">●<small>EARTH</small></div>
+          <div class="site-pin" id="sitePin">A</div>
+          <div class="scene-label">LUNAR SOUTH POLE<br><small>Illustrative terrain graphic</small></div>
+        </div>
+        <div class="legend"><span><i class="sun-key"></i> Sun direction</span><span><i class="earth-key"></i> Earth direction</span><span><i class="pin-key"></i> Selected site</span></div>
+      </article>
+
+      <article class="panel chart-panel">
+        <div class="section-heading"><div><span class="eyebrow">03 / DAILY PROFILE</span><h2>Light & communication</h2></div></div>
+        <div class="chart-legend"><span><i class="sun-key"></i> Sunlight index</span><span><i class="earth-key"></i> Earth visibility index</span></div>
+        <div class="chart" id="chart" aria-label="Illustrative hourly chart"></div>
+        <p class="chart-caption">Illustrative hourly indices only. Replace with verified ephemeris and terrain-horizon data before scientific use.</p>
+      </article>
+    </section>
+
+    <section class="panel compare-panel">
+      <div class="section-heading"><div><span class="eyebrow">04 / COMPARE</span><h2>Candidate site overview</h2></div><span class="tag">DEMO SCORES</span></div>
+      <div class="table-wrap"><table><thead><tr><th>Site</th><th>Sunlight index</th><th>Communication</th><th>Trade-off</th></tr></thead><tbody id="compareRows"></tbody></table></div>
+    </section>
+
+    <section class="disclaimer panel">
+      <div class="disclaimer-icon">!</div><div><h3>Scientific integrity matters</h3><p>This prototype is a user-interface demonstration. Its percentages, angles, and site scores are not real lunar measurements. A competition-ready version should cite NASA or other authoritative datasets, document calculations, include terrain/horizon effects when supported, and clearly separate measured, calculated, and estimated values.</p></div>
+    </section>
+  </main>
+  <footer> LUNARNAV · CONCEPT PROTOTYPE <span>Built for exploration, not operational mission decisions.</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
